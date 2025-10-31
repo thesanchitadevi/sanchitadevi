@@ -2,6 +2,6 @@
 title: "Empty Example"
 published: true
 description: "Post description goes here."
-tags: ["Tags", "Go", "Here"]
+tags: ["React", "Tailwind", "NextJS"]
 date: "Jan 01 2025"
 ---

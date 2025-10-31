@@ -1,14 +1,14 @@
 {
-  "userEmail": "user@email.com",
+  "userEmail": "thesanchitadevi@gmail.com",
   "userPhoneNumber": "user-phone-number",
   "userSocials": [
     {
       "title": "LinkedIn",
-      "link": "https://www.linkedin.com/in/linkedinHandle"
+      "link": "https://www.linkedin.com/in/thesanchitadevi/"
     },
     {
       "title": "GitHub",
-      "link": "https://www.github.com/githubUsername"
+      "link": "https://www.github.com/thesanchitadevi"
     }
   ]
 }
