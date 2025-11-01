@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { render } from "astro:content";
+
+export async function getStaticPaths() {
+  const experiences = await getCollection("experiences");
+  return experiences.map((experience) => ({
+    params: { slug: experience.id },
+    props: experience,
+  }));
+}
+
+type Props = CollectionEntry<"experiences">;
+const experience = Astro.props;
+
+const { Content } = await render(experience);
+---
+
+<Layout
+  siteTitle={Astro.props.data.title}
+  siteDescription={Astro.props.data.description}
+  headerCosmeticText="EXPERIENCE"
+>
+  <Section class="prose-lg p-8">
+    <Content />
+  </Section>
+</Layout>

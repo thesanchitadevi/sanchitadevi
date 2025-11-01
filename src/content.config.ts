@@ -12,4 +12,17 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+const experiences = defineCollection({
+  loader: glob({ base: "./src/experiences", pattern: "**/*.{md,mdx}" }),
+  schema: z.object({
+    title: z.string(),
+    published: z.boolean(),
+    description: z.string(),
+    date: z.coerce.date(),
+    company: z.string(),
+    role: z.string(),
+    tags: z.string().array(),
+  }),
+});
+
+export const collections = { posts, experiences };

@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Section from "../components/Section.astro";
 import Posts from "../components/reactive/Posts.svelte";
+import Experiences from "../components/reactive/Experiences.svelte";
 import Tags from "../components/reactive/Tags.svelte";
 import CosmeticText from "../components/CosmeticText.astro";
 
@@ -12,6 +13,7 @@ import userPicture from "../../public/user-picture.jpeg";
 import { getCollection } from "astro:content";
 
 const allPosts = (await getCollection("posts")).filter((post) => post.data.published);
+const allExperiences = (await getCollection("experiences")).filter((exp) => exp.data.published);
 
 const heroTags: Set<string> = new Set(
   allPosts.flatMap((post) => post.data.tags),
@@ -39,8 +41,13 @@ const cosmeticTexts: { [section: string]: string } = {
   </Section>
 
   <!-- POSTS -->
-  <Section>
+  <!-- <Section>
     <Posts client:load allPosts={allPosts} />
+  </Section> -->
+  
+  <!-- EXPERIENCES -->
+  <Section>
+    <Experiences client:load allPosts={allExperiences} />
   </Section>
 
   <!-- ABOUT -->
