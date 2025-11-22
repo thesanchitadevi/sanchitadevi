@@ -7,12 +7,12 @@
 
 @theme {
   /* COLOR */
-  --theme-hue: 200;
-  --color-primary: hsl(var(--theme-hue), 20%, 8%);
-  --color-primary-foreground: hsl(var(--theme-hue), 100%, 92%);
-  --color-secondary: hsl(var(--theme-hue), 40%, 12%);
-  --color-accent: hsl(var(--theme-hue), 100%, 50%);
-  --color-edge: hsl(var(--theme-hue), 30%, 18%);
+  --theme-hue: 260;
+  --color-primary: hsl(var(--theme-hue), 20%, 6%);
+  --color-primary-foreground: hsl(var(--theme-hue), 90%, 96%);
+  --color-secondary: hsl(var(--theme-hue), 30%, 10%);
+  --color-accent: hsl(var(--theme-hue), 90%, 65%);
+  --color-edge: hsl(var(--theme-hue), 25%, 15%);
 
   /* FONT */
   --font-primary: Rajdhani, system-ui;

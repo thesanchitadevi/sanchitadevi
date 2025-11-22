@@ -23,7 +23,7 @@
             class="hover:brightness-125 duration-200"
             href={`mailto:${userEmail}`}>{userEmail}</a>
             {#each userSocials as social}
-                <a class="hover:brightness-125 duration-200" href={social.link}>
+                <a class="hover:brightness-125 duration-200" href={social.link} target="_blank" rel="noopener noreferrer">
                     {social.title}
                 </a>
             {/each}

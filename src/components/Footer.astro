@@ -17,7 +17,7 @@ import { userName } from "../data/user-personal.json";
       >
       {
         userSocials.map((social) => (
-          <a class="hover:brightness-125 duration-200" href={social.link}>
+          <a class="hover:brightness-125 duration-200" href={social.link} target="_blank" rel="noopener noreferrer">
             {social.title}<Arrow class="stroke-primary-foreground" rotate={-45} />
           </a>
         ))

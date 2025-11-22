@@ -6,7 +6,7 @@
   export let allPosts: CollectionEntry<"experiences">[];
 
   $: posts = allPosts.sort((a, b) => {
-    return b.data.date.getTime() - a.data.date.getTime();
+    return b.data.startDate.getTime() - a.data.startDate.getTime();
   });
 
   $: filteredPosts = posts.filter((post) => {
@@ -49,7 +49,9 @@
             {/each}
           </div>
           <span class="text-xs text-subtle">
-            {new Date(post.data.date).toLocaleDateString()}
+            {new Date(post.data.startDate).toLocaleDateString("en-GB")} - {post.data.endDate
+              ? new Date(post.data.endDate).toLocaleDateString("en-GB")
+              : "Present"}
           </span>
         </div>
       </a>

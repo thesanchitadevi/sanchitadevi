@@ -8,7 +8,7 @@ import CosmeticText from "../components/CosmeticText.astro";
 
 import { siteTitle, SiteDescription } from "../data/site.json";
 import { userProfessionalDescription } from "../data/user-professional.json";
-import { userIntroduction, userName } from "../data/user-personal.json";
+import { userIntroduction, userName, userLocation } from "../data/user-personal.json";
 import userPicture from "../../public/user-picture.jpeg";
 import { getCollection } from "astro:content";
 
@@ -16,7 +16,7 @@ const allPosts = (await getCollection("posts")).filter((post) => post.data.publi
 const allExperiences = (await getCollection("experiences")).filter((exp) => exp.data.published);
 
 const heroTags: Set<string> = new Set(
-  allPosts.flatMap((post) => post.data.tags),
+  [...allPosts, ...allExperiences].flatMap((item) => item.data.tags),
 );
 
 const cosmeticTexts: { [section: string]: string } = {
@@ -32,7 +32,7 @@ const cosmeticTexts: { [section: string]: string } = {
   headerCosmeticText={cosmeticTexts.header}
 >
   <!-- HERO -->
-  <Section class="relative flex min-h-72 pl-4 bg-radial-[at_50%_10%] from-[#0e1a20] to-transparent">
+  <Section class="relative flex min-h-72 pl-4 bg-radial-[at_50%_10%] from-secondary to-transparent">
     <div class="max-w-md m-auto text-center">
       <span class="text-2xl">{userProfessionalDescription}</span>
       <Tags client:load tags={heroTags} />
@@ -51,10 +51,10 @@ const cosmeticTexts: { [section: string]: string } = {
   </Section>
 
   <!-- ABOUT -->
-  <Section class="relative flex min-h-96 bg-radial-[at_50%_90%] from-[#0e1a20] to-transparent">
+  <Section class="relative flex min-h-96 bg-radial-[at_50%_90%] from-secondary to-transparent">
     <span class="absolute"><CosmeticText text={cosmeticTexts.about} vertical /></span>
     <div class="flex flex-col gap-16 max-w-3xl mx-auto px-8 pt-32 pb-16 md:flex-row md:p-16">
-      <div class="group/image aspect-square h-48 w-48 mx-auto my-auto rounded-interactive bg-[#0a374e] md:mx-0">
+      <div class="group/image aspect-square h-48 w-48 mx-auto my-auto rounded-interactive bg-accent/20 md:mx-0">
         <img class="h-48 w-48 scale-110 -rotate-z-12 overflow-clip object-cover rounded-interactive group-hover/image:scale-[101%] group-hover/image:-rotate-z-0 duration-200"
           src={userPicture.src}
           alt={`${userName}'s profile picture.`}
@@ -64,7 +64,11 @@ const cosmeticTexts: { [section: string]: string } = {
       <div class="my-auto text-pretty">
         <h1 class="text-xl">Hi.</h1>
         <p>{userIntroduction}</p>
+        <div class="flex gap-2 mt-4 text-subtle">
+          <p>Based in {userLocation}.</p>
+        </div>
       </div>
+
     </div>
   </Section>
 </Layout>
