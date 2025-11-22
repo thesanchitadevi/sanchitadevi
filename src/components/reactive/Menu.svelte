@@ -16,9 +16,9 @@
 </button>
 
 {#if droppedDown}
-<div transition:blur class="fixed top-0 left-0 flex flex-row z-40 h-lvh backdrop-blur-sm">
-    <div transition:slide={{axis: "x"}} class="flex w-[70svw] border-r border-accent bg-primary/95">
-        <div class="flex flex-col gap-8 my-auto ml-auto p-8 text-2xl text-right">
+<div transition:blur class="fixed top-0 left-0 flex flex-row z-40 w-full h-lvh backdrop-blur-sm">
+    <div transition:slide={{axis: "x"}} class="flex w-[75svw] max-w-sm border-r border-accent bg-primary/95">
+        <div class="flex flex-col gap-6 my-auto ml-auto p-6 text-xl text-right w-full break-words">
             <a
             class="hover:brightness-125 duration-200"
             href={`mailto:${userEmail}`}>{userEmail}</a>
@@ -29,7 +29,7 @@
             {/each}
         </div>
     </div>
-    <button class="w-[30svh]" aria-label="Exit Drop Down Menu" onclick={() => droppedDown = !droppedDown}>
+    <button class="flex-1" aria-label="Exit Drop Down Menu" onclick={() => droppedDown = !droppedDown}>
     </button>
 </div>
 {/if}

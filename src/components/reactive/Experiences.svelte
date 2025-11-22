@@ -15,7 +15,7 @@
   });
 </script>
 
-<div class="p-8">
+<div class="p-4 md:p-8">
   <Filters {allPosts} />
   <div class="grid gap-y-4">
     {#each filteredPosts as post}
@@ -25,7 +25,7 @@
       >
         <div class="flex justify-between">
           <div>
-            <h2 class="text-2xl">{post.data.role} at {post.data.company}</h2>
+            <h2 class="text-xl md:text-2xl">{post.data.role} at {post.data.company}</h2>
             <p class="text-subtle">{post.data.description}</p>
           </div>
           <svg
@@ -42,8 +42,8 @@
             />
           </svg>
         </div>
-        <div class="flex gap-4">
-          <div class="flex gap-2">
+        <div class="flex flex-col gap-2">
+          <div class="flex flex-wrap gap-2">
             {#each post.data.tags as tag}
               <span class="rounded-tag bg-subtle px-2 py-1 text-xs">{tag}</span>
             {/each}
