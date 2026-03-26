@@ -22,6 +22,7 @@ const heroTags: Set<string> = new Set(
 const cosmeticTexts: { [section: string]: string } = {
   header: "thesanchitadevi",
   hero: "SKILLS",
+  experience: "EXPERIENCES",
   about: "ABOUT ME",
 };
 ---
@@ -46,21 +47,21 @@ const cosmeticTexts: { [section: string]: string } = {
   </Section> -->
   
   <!-- EXPERIENCES -->
-  <Section>
+ <Section class="relative flex min-h-96 bg-radial-[at_50%_50%] from-secondary to-transparent">
+    <span class="absolute"><CosmeticText text={cosmeticTexts.experience} vertical /></span>
     <Experiences client:load allPosts={allExperiences} />
   </Section>
 
   <!-- ABOUT -->
   <Section class="relative flex min-h-96 bg-radial-[at_50%_90%] from-secondary to-transparent">
-    <span class="absolute"><CosmeticText text={cosmeticTexts.about} vertical /></span>
     <div class="flex flex-col gap-16 max-w-3xl mx-auto px-8 pt-32 pb-16 md:flex-row md:p-16">
       <div class="group/image aspect-square h-48 w-48 mx-auto my-auto rounded-interactive bg-accent/20 md:mx-0">
         <img class="h-48 w-48 scale-110 -rotate-z-12 overflow-clip object-cover rounded-interactive group-hover/image:scale-[101%] group-hover/image:-rotate-z-0 duration-200"
-          src={userPicture.src}
-          alt={`${userName}'s profile picture.`}
+        src={userPicture.src}
+        alt={`${userName}'s profile picture.`}
         />
       </div>
-
+      
       <div class="my-auto text-pretty">
         <h1 class="text-xl">Hi.</h1>
         <p>{userIntroduction}</p>
@@ -68,7 +69,8 @@ const cosmeticTexts: { [section: string]: string } = {
           <p>Based in {userLocation}.</p>
         </div>
       </div>
-
+      
     </div>
+    <CosmeticText text={cosmeticTexts.about} vertical />
   </Section>
 </Layout>

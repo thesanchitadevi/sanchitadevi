@@ -4,6 +4,7 @@ import Arrow from "../components/Arrow.astro";
 
 import { userSocials, userEmail } from "../data/user-contact.json";
 import { userName } from "../data/user-personal.json";
+import CosmeticText from "./CosmeticText.astro";
 ---
 
 <Section class="flex flex-row p-2">
@@ -34,7 +35,11 @@ import { userName } from "../data/user-personal.json";
 </Section>
 
 <!-- CREDITS -->
-<Section class="flex flex-row justify-center gap-8 m-auto py-16 text-center">
- 
- 
+<Section class="relative flex min-h-48 items-center justify-center text-center bg-radial-[at_50%_10%] from-secondary to-transparent">
+  <span class="absolute left-0">
+    <CosmeticText text="last thought" vertical />
+  </span>
+  <p class="text-[15px] md:text-xl font-light italic text-subtle leading-relaxed tracking-wide max-w-sm">
+    Where's the door of this world to go out from here!
+  </p>
 </Section>
