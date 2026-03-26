@@ -12,8 +12,8 @@ import { userIntroduction, userName, userLocation } from "../data/user-personal.
 import userPicture from "../../public/user-picture.jpeg";
 import { getCollection } from "astro:content";
 
-const allPosts = (await getCollection("posts")).filter((post) => post.data.published);
-const allExperiences = (await getCollection("experiences")).filter((exp) => exp.data.published);
+const allPosts = (await getCollection("posts")).filter((post:any) => post.data.published);
+const allExperiences = (await getCollection("experiences")).filter((exp:any) => exp.data.published);
 
 const heroTags: Set<string> = new Set(
   [...allPosts, ...allExperiences].flatMap((item) => item.data.tags),
