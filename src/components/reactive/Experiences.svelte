@@ -15,7 +15,7 @@
   });
 </script>
 
-<div class="p-4 md:p-8">
+<div class="w-full p-4 md:p-8">
   <Filters {allPosts} />
   <div class="grid gap-y-4">
     {#each filteredPosts as post}
@@ -29,7 +29,7 @@
             <p class="text-subtle">{post.data.description}</p>
           </div>
           <svg
-            class="inline aspect-square w-3 h-auto fill-transparent"
+            class="inline aspect-square w-3 h-auto fill-transparent transition-transform group-hover:translate-x-1 duration-200"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
           >

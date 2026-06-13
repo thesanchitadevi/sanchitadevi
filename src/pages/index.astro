@@ -49,7 +49,9 @@ const cosmeticTexts: { [section: string]: string } = {
   <!-- EXPERIENCES -->
  <Section class="relative flex min-h-96 bg-radial-[at_50%_50%] from-secondary to-transparent">
     <span class="absolute"><CosmeticText text={cosmeticTexts.experience} vertical /></span>
-    <Experiences client:load allPosts={allExperiences} />
+    <div class="w-full">
+      <Experiences client:load allPosts={allExperiences} />
+    </div>
   </Section>
 
   <!-- ABOUT -->
