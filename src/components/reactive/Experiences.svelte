@@ -43,9 +43,9 @@
           </svg>
         </div>
         <div class="flex flex-col gap-2">
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-x-3 gap-y-1">
             {#each post.data.tags as tag}
-              <span class="rounded-tag bg-subtle px-2 py-1 text-xs">{tag}</span>
+              <span class="text-xs text-subtle font-medium">#{tag}</span>
             {/each}
           </div>
           <span class="text-xs text-subtle">

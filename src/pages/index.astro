@@ -5,6 +5,7 @@ import Posts from "../components/reactive/Posts.svelte";
 import Experiences from "../components/reactive/Experiences.svelte";
 import Tags from "../components/reactive/Tags.svelte";
 import CosmeticText from "../components/CosmeticText.astro";
+import Skills from "../components/Skills.astro";
 
 import { siteTitle, SiteDescription } from "../data/site.json";
 import { userProfessionalDescription } from "../data/user-professional.json";
@@ -21,7 +22,8 @@ const heroTags: Set<string> = new Set(
 
 const cosmeticTexts: { [section: string]: string } = {
   header: "thesanchitadevi",
-  hero: "SKILLS",
+  hero: "WELCOME",
+  skills: "SKILLS",
   experience: "EXPERIENCES",
   about: "ABOUT ME",
 };
@@ -39,6 +41,14 @@ const cosmeticTexts: { [section: string]: string } = {
       <Tags client:load tags={heroTags} />
     </div>
     <CosmeticText text={cosmeticTexts.hero} vertical />
+  </Section>
+
+  <!-- SKILLS -->
+  <Section class="relative flex min-h-96 bg-radial-[at_50%_30%] from-secondary to-transparent">
+    <span class="absolute"><CosmeticText text={cosmeticTexts.skills} vertical /></span>
+    <div class="w-full">
+      <Skills />
+    </div>
   </Section>
 
   <!-- POSTS -->

@@ -1,0 +1,40 @@
+{
+  "skills": [
+    {
+      "category": "LANGUAGES & MARKUP",
+      "icon": "languages",
+      "items": [
+        { "name": "TypeScript", "level": 90, "logo": "typescript" },
+        { "name": "JavaScript", "level": 95, "logo": "javascript" },
+        { "name": "HTML", "level": 95, "logo": "html" },
+        { "name": "CSS", "level": 90, "logo": "css" }
+      ]
+    },
+    {
+      "category": "FRAMEWORKS & LIBRARIES",
+      "icon": "frameworks",
+      "items": [
+        { "name": "React", "level": 88, "logo": "react" },
+        { "name": "Next.js", "level": 85, "logo": "nextjs" }
+      ]
+    },
+    {
+      "category": "STYLING & DESIGN",
+      "icon": "styling",
+      "items": [
+        { "name": "Tailwind CSS", "level": 95, "logo": "tailwind" },
+        { "name": "Bootstrap", "level": 80, "logo": "bootstrap" },
+        { "name": "Figma", "level": 75, "logo": "figma" }
+      ]
+    },
+    {
+      "category": "TOOLS & SERVICES",
+      "icon": "tools",
+      "items": [
+        { "name": "Git", "level": 85, "logo": "git" },
+        { "name": "GitHub", "level": 90, "logo": "github" },
+        { "name": "Vercel", "level": 85, "logo": "vercel" }
+      ]
+    }
+  ]
+}
