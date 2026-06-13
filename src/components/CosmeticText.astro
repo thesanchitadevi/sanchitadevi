@@ -2,13 +2,16 @@
 interface Props {
   text: string;
   vertical?: boolean;
+  [key: string]: any;
 }
 
-const { text, vertical = false } = Astro.props;
+const { text, vertical = false, ...attrs } = Astro.props;
 ---
 
-<span style={vertical ? "writing-mode: vertical-lr;" : ""}
+<span
+  style={vertical ? "writing-mode: vertical-lr;" : ""}
   class="text-edge block px-2 text-xl font-semibold tracking-[0.3em]"
+  {...attrs}
 >
   {text}
 </span>

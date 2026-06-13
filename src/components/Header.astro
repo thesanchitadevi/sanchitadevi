@@ -21,6 +21,7 @@ const { cosmeticText = "" } = Astro.props;
 
   <span class="mt-auto">
     <CosmeticText
+      id="header-current-date"
       text={new Date().toLocaleDateString("en-us", { year: "numeric", month: "short" }).toUpperCase()}
     />
   </span>
@@ -49,3 +50,13 @@ const { cosmeticText = "" } = Astro.props;
     </div>
   </div>
 </Section>
+
+<script>
+  function updateDate() {
+    const dateEl = document.getElementById("header-current-date");
+    if (dateEl) {
+      dateEl.textContent = new Date().toLocaleDateString("en-us", { year: "numeric", month: "short" }).toUpperCase();
+    }
+  }
+  document.addEventListener("astro:page-load", updateDate);
+</script>
