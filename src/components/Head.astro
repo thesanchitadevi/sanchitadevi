@@ -31,6 +31,83 @@ const {
 />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Anti-FOUC Immediate Calendar Theme & Favicon Script -->
+<script is:inline>
+  (function () {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      let themeId = urlParams.get("theme");
+
+      if (themeId) {
+        if (themeId === "auto" || themeId === "reset") {
+          try { sessionStorage.removeItem("preview_theme"); } catch (e) {}
+          themeId = null;
+        } else {
+          try { sessionStorage.setItem("preview_theme", themeId); } catch (e) {}
+        }
+      } else {
+        try { themeId = sessionStorage.getItem("preview_theme"); } catch (e) {}
+      }
+
+      if (!themeId) {
+        let now = new Date();
+        const dateParam = urlParams.get("date");
+        if (dateParam) {
+          const parsed = new Date(dateParam);
+          if (!isNaN(parsed.getTime())) now = parsed;
+        }
+
+        const m = now.getMonth() + 1;
+        const d = now.getDate();
+        const y = now.getFullYear();
+
+        // 1. Victory Day (BD): Dec 15 - 16
+        if (m === 12 && (d === 15 || d === 16)) themeId = "victory-day";
+        // 2. Christmas: Dec 24 - 26
+        else if (m === 12 && d >= 24 && d <= 26) themeId = "christmas";
+        // 3. New Year: Dec 31 - Jan 2
+        else if ((m === 12 && d === 31) || (m === 1 && d <= 2)) themeId = "new-year";
+        // 4. Halloween: Oct 30 - 31
+        else if (m === 10 && (d === 30 || d === 31)) themeId = "halloween";
+        // 5. Mother Language Day: Feb 20 - 21
+        else if (m === 2 && (d === 20 || d === 21)) themeId = "language-day";
+        // 6. Pohela Falgun: Feb 13 - 15
+        else if (m === 2 && d >= 13 && d <= 15) themeId = "falgun";
+        // 7. Independence Day (BD): Mar 25 - 26
+        else if (m === 3 && (d === 25 || d === 26)) themeId = "independence-day";
+        // 8. Pohela Boishakh: Apr 13 - 15
+        else if (m === 4 && d >= 13 && d <= 15) themeId = "boishakh";
+        else {
+          // Lunar quick checks
+          // Holi (March)
+          if ((y === 2026 && m === 3 && d >= 2 && d <= 4) ||
+              (y === 2025 && m === 3 && d >= 13 && d <= 14) ||
+              (y === 2027 && m === 3 && d >= 21 && d <= 23)) {
+            themeId = "holi";
+          }
+          // Durga Puja (Sep/Oct)
+          else if ((y === 2026 && m === 10 && d >= 15 && d <= 21) ||
+                   (y === 2025 && ((m === 9 && d >= 27) || (m === 10 && d <= 2))) ||
+                   (y === 2027 && m === 10 && d >= 4 && d <= 10)) {
+            themeId = "durga-puja";
+          }
+          // Eid
+          else if ((y === 2026 && ((m === 3 && d >= 18 && d <= 22) || (m === 5 && d >= 25 && d <= 29))) ||
+                   (y === 2025 && ((m === 3 && d >= 29) || (m === 4 && d <= 2) || (m === 6 && d >= 5 && d <= 8)))) {
+            themeId = "eid";
+          } else {
+            themeId = "prussian";
+          }
+        }
+      }
+
+      if (themeId) {
+        document.documentElement.setAttribute("data-theme", themeId);
+      }
+    } catch (e) {}
+  })();
+</script>
+
 <!-- Font preloads -->
 <link
   rel="preload"
@@ -63,6 +140,3 @@ const {
 <meta property="twitter:image" content={new URL(pageThumbnail, Astro.url)} />
 
 <ClientRouter />
-
-
-

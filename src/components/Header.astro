@@ -19,12 +19,12 @@ const { cosmeticText = "" } = Astro.props;
     <CosmeticText text={cosmeticText} vertical />
   </div>
 
-  <span class="mt-auto">
+  <div class="mt-auto">
     <CosmeticText
       id="header-current-date"
       text={new Date().toLocaleDateString("en-us", { year: "numeric", month: "short" }).toUpperCase()}
     />
-  </span>
+  </div>
 </Section>
 
 <Section class="flex flex-row p-2">

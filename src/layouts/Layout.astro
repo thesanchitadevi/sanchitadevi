@@ -2,6 +2,7 @@
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import ThemeManager from "../components/reactive/ThemeManager.svelte";
 
 interface Props {
   siteTitle: string;
@@ -18,7 +19,10 @@ const { siteTitle, siteDescription, headerCosmeticText } = Astro.props;
     <Head pageTitle={siteTitle} pageDescription={siteDescription} />
   </head>
   <body>
-    <main class="min-h-svh">
+    <!-- Theme Manager handles occasion canvas particles & syncs theme/favicon -->
+    <ThemeManager client:load />
+
+    <main class="relative z-10 min-h-svh">
       <Header cosmeticText={headerCosmeticText} />
       <slot />
       <Footer />
