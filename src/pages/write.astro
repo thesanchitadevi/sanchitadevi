@@ -1,0 +1,17 @@
+---
+import Head from "../components/Head.astro";
+import ThoughtWriter from "../components/reactive/ThoughtWriter.svelte";
+import { siteTitle } from "../data/site.json";
+---
+
+<!doctype html>
+<html lang="en" class="bg-primary">
+  <head>
+    <Head pageTitle={`Writer Studio | ${siteTitle}`} pageDescription="Private thought and blog writer sanctuary" />
+  </head>
+  <body class="min-h-svh text-primary-foreground bg-primary selection:bg-accent selection:text-primary">
+    <main class="min-h-svh">
+      <ThoughtWriter client:load />
+    </main>
+  </body>
+</html>

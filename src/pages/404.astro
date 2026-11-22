@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ThoughtDetailsPage from "../components/reactive/ThoughtDetailsPage.svelte";
+import { siteTitle } from "../data/site.json";
+---
+
+<Layout
+  siteTitle={`Not Found | ${siteTitle}`}
+  siteDescription="Page not found"
+  headerCosmeticText="404"
+>
+  <div id="fallback-container">
+    <!-- If URL is /my-thoughts/..., render ThoughtDetailsPage -->
+    <div id="thought-fallback" style="display: none;">
+      <ThoughtDetailsPage client:load />
+    </div>
+
+    <!-- Normal 404 page -->
+    <div id="generic-404" class="max-w-md mx-auto my-24 p-8 text-center border border-edge rounded-interactive space-y-4">
+      <h1 class="text-4xl font-bold">404</h1>
+      <p class="text-subtle text-sm">The page you are looking for doesn't exist.</p>
+      <div class="pt-2">
+        <a href="/" class="px-4 py-2 bg-accent text-primary font-bold text-xs rounded-interactive hover:opacity-90 inline-block">
+          ← Return to Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    if (typeof window !== "undefined") {
+      const path = window.location.pathname;
+      if (path.startsWith("/my-thoughts/") && path !== "/my-thoughts/") {
+        const thoughtEl = document.getElementById("thought-fallback");
+        const genericEl = document.getElementById("generic-404");
+        if (thoughtEl && genericEl) {
+          thoughtEl.style.display = "block";
+          genericEl.style.display = "none";
+        }
+      }
+    }
+  </script>
+</Layout>

@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Thoughts from "../../components/reactive/Thoughts.svelte";
+import ThoughtDetailsPage from "../../components/reactive/ThoughtDetailsPage.svelte";
+import { siteTitle, SiteDescription } from "../../data/site.json";
+
+export async function getStaticPaths() {
+  return [
+    { params: { title: undefined } },
+    { params: { title: "details" } },
+  ];
+}
+
+const { title } = Astro.params;
+const isDetailPage = Boolean(title && title !== "index");
+---
+
+<Layout
+  siteTitle={isDetailPage ? `Thought | ${siteTitle}` : `My Thoughts | ${siteTitle}`}
+  siteDescription={SiteDescription}
+  headerCosmeticText={isDetailPage ? "THOUGHT" : "THOUGHTS"}
+>
+  <main class="min-h-svh py-4">
+    {isDetailPage ? (
+      <ThoughtDetailsPage client:load slug={title} />
+    ) : (
+      <Thoughts client:load />
+    )}
+  </main>
+</Layout>
